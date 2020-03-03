@@ -7,13 +7,14 @@ const reverse = function(arr) {
 
 const sort = function(arr) {
     arrSorted = [];
-    // ...
+    arr.forEach(item => arrSorted.push(item));
+    arrSorted.sort();
     return arrSorted;
 }
 
 const even = function(arr) {
     let arrEven = [];
-    // ...
+    arr.forEach(=> arrEven.push(item))
     return arrEven;
 }
 
