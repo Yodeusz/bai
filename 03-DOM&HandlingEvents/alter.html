@@ -4,10 +4,10 @@
 		<title>Pink Floyd</title>
 		<meta charset="UTF-8">
 	</head>
-	<body>
-		<h1>Another Brick in the Wall</h1>
-		<h3>Pink Floyd</h3>
-		<p>We don't need no education<br>
+	<body ondblclick="changeBackgoundColor()">
+		<h1 onclick="displayTitle(this)">Another Brick in the Wall</h1>
+		<h3 onclick="displayInfo()">Pink Floyd</h3>
+		<p onclick="toItalics()" oncopy="copyrightInfo()">We don't need no education<br>
 		We don't need no thought control<br>
 		No dark sarcasm in the classroom<br>
 		Teachers leave them kids alone<br>
@@ -15,12 +15,36 @@
 		All in all it's just another brick in the wall<br>
 		All in all you're just another brick in the wall</p>
 		
-		<p style="visibility: hidden;">Pink Floyd were an English rock band formed in London.<br>
+		<p style="visibility: hidden;" onclick="displayPhoto()">Pink Floyd were an English rock band formed in London.<br>
 		They achieved international acclaim with their progressive<br>
 		and psychedelic music.</p>
+
+		<img style="visibility: hidden" src="https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg">
 		
 		<script>
-			// a JavaScript code here ...
+			function displayTitle(element){
+				element.innerHTML += " (Part 2)";
+			}
+			
+			function displayInfo(){
+				document.getElementsByTagName("p")[1].style.visibility = "visible"
+			}
+
+			function toItalics(){
+				document.getElementsByTagName("p")[0].style.fontStyle = "italic"
+			}
+
+			function changeBackgoundColor(){
+				document.getElementsByTagName("body")[0].style.backgroundColor = "yellow"
+			}
+
+			function copyrightInfo(){
+				alert("Copyright violation!")
+			}
+
+			function displayPhoto(){
+				document.getElementsByTagName("img")[0].style.visibility = "visible"
+			}
 			
 		</script>
 	</body>
