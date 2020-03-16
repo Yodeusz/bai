@@ -29,12 +29,8 @@
             document.getElementsByName("item")[0].value = "";
         }
 
-        $(document).ready(function(){
-            $('li').on('dblclick', function(e) {
-                e.preventDefault();
-                $(this).remove();
-            });
-        }); 
+        $(document).on('click', 'li', function() { $(this).remove(); });
+
     </script>
 </body>
 
