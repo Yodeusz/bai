@@ -6,7 +6,22 @@
 	</head>
 	<body>
 		<script>
-			// a JavaScript code here ...
+			var body = document.getElementsByTagName("body")[0];
+			var createTable = document.createElement("table");
+			var createTr = document.createElement("tr");
+			var createTd = document.createElement("td");
+
+			body.appendChild(createTable);
+			var table = document.getElementsByTagName("table")[0];
+			table.appendChild(createTr);
+			table.appendChild(createTr);
+			var tableRow1 = document.getElementsByTagName("tr")[0];
+			tableRow1.appendChild(createTd);
+			tableRow1.appendChild(createTd);
+
+			var tableRow2 = document.getElementsByTagName("tr")[1];
+			tableRow2.appendChild(createTd);
+			//tableRow2.appendChild(createTd);
 			
 		</script>
 	</body>

@@ -4,6 +4,7 @@
 <head>
     <title>Shopping List</title>
     <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -13,14 +14,14 @@
         <button type="button" onclick="addItem()">Add</button>
     </p>
     <h3>List of items</h3>
-    <ol>
+    <ol id="myList">
         <li>cooking oil</li>
         <li>breakfast cereal</li>
         <li>bread</li>
     </ol>
 
     <script>
-    	function addItem(){
+        function addItem(){
             let item = document.getElementsByName("item")[0].value;
             if (item != ""){
                 document.getElementsByTagName("ol")[0].innerHTML += "<li>"+item+"</li>";
@@ -28,6 +29,12 @@
             document.getElementsByName("item")[0].value = "";
         }
 
+        $(document).ready(function(){
+            $('li').on('dblclick', function(e) {
+                e.preventDefault();
+                $(this).remove();
+            });
+        }); 
     </script>
 </body>
 
