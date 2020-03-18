@@ -12,11 +12,11 @@ class Students {
                 result.push(name);
             }
         }
-        return result
+        return new Students(result)
     }
 
     sort() {
-        return this.names.sort() 
+        return new Students(this.names.sort()) 
     }
 
     get() {
@@ -24,10 +24,10 @@ class Students {
     }
 
     getFirst(n) {
-        if (n > this.names.length()){
+        if (n > this.names.length){
             return "Error!"
         }
-        return this.names.slice(0, n+1)
+        return new Students(this.names.slice(0, n))
     }
 }
 
@@ -39,6 +39,3 @@ console.log(students.startWith('M').sort());
 console.log(students.sort().getFirst(4));
 console.log(students.startWith('M').sort().getFirst(2));
 console.log(students.get());
-
-
-

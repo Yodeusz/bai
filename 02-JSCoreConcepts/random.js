@@ -1,6 +1,6 @@
 const fillArray = (min, max, numOfElements) => {
     array = []
-    for (let i=0; i<10; i++){
+    for (let i=0; i<numOfElements; i++){
         array.push(Math.floor(Math.random() * (max - min + 1)) + min)
     }
     return array;

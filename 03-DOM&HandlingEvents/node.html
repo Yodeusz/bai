@@ -7,22 +7,28 @@
 	<body>
 		<script>
 			var body = document.getElementsByTagName("body")[0];
-			var createTable = document.createElement("table");
-			var createTr = document.createElement("tr");
-			var createTd = document.createElement("td");
+			body.appendChild(document.createElement("table"));
+			
 
-			body.appendChild(createTable);
 			var table = document.getElementsByTagName("table")[0];
-			table.appendChild(createTr);
-			table.appendChild(createTr);
+			table.style.borderCollapse = "collapse";
+			table.style.width = "150px";
+			table.style.textAlign = "center";
+			table.appendChild(document.createElement("tr"));
+			table.appendChild(document.createElement("tr"));
+
 			var tableRow1 = document.getElementsByTagName("tr")[0];
-			tableRow1.appendChild(createTd);
-			tableRow1.appendChild(createTd);
+			tableRow1.appendChild(document.createElement("td"));
+			tableRow1.appendChild(document.createElement("td"));
 
 			var tableRow2 = document.getElementsByTagName("tr")[1];
-			tableRow2.appendChild(createTd);
-			//tableRow2.appendChild(createTd);
+			tableRow2.appendChild(document.createElement("td"));
+			tableRow2.appendChild(document.createElement("td"));
 			
+			for (let i = 0; i < 5; i++){
+				document.getElementsByTagName("td")[i].innerHTML = i+1;
+				document.getElementsByTagName("td")[i].style.border = "1px solid black";
+			}
 		</script>
 	</body>
 </html>

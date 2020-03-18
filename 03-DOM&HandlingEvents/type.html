@@ -21,15 +21,14 @@
 		Jak głaz bodzący morze, reduta Ordona.</p>
 		
 		<textarea oninput="setTimeout(typeTest, 30000)" rows="15" cols="50"></textarea><br>
-		
+		<p id="score"></p>
 		<script>
 			function typeTest(){
 				let text = document.getElementsByTagName("textarea")[0].value;
-				let numOfWords = text.split(" ").length;
+				let numOfWords = text.replace(/\s\s+/g," ").split(" ").length;
 
-				alert("Udało Ci się wpisać " + numOfWords + " słów!")
+				document.getElementById("score").innerHTML = "Liczba wpisanych słów: " + numOfWords;
 			}
-			
 		</script>
 		
 	</body>

@@ -6,7 +6,7 @@
 
 <body>
     <h1>Finding elements in DOM</h1>
-    <p id="someTest">Find an element by element id</p>
+    <p id="someText">Find an element by element id</p>
     <p class="important">Find elements by class name</p>
     <p>Find elements by tag name</p>
 
@@ -20,7 +20,7 @@
         }
 
         console.log(document.getElementsByTagName("h1")[0].innerText);
-        console.log(document.getElementById("someTest").innerText);
+        console.log(document.getElementById("someText").innerText);
         console.log(document.getElementsByClassName("important")[0].innerText);
         logAllElements("p");
     </script>

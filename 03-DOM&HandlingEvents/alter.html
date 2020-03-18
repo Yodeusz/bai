@@ -18,8 +18,6 @@
 		<p style="visibility: hidden;" onclick="displayPhoto()">Pink Floyd were an English rock band formed in London.<br>
 		They achieved international acclaim with their progressive<br>
 		and psychedelic music.</p>
-
-		<img style="visibility: hidden" src="https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg">
 		
 		<script>
 			function displayTitle(element){
@@ -43,9 +41,9 @@
 			}
 
 			function displayPhoto(){
-				document.getElementsByTagName("img")[0].style.visibility = "visible"
+				document.getElementsByTagName("body")[0].appendChild(document.createElement("img"));
+				document.getElementsByTagName("img")[0].src = "https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg";
 			}
-			
 		</script>
 	</body>
 </html>
