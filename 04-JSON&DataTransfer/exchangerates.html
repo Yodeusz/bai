@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Exchange Rates</title>
+		<meta charset="UTF-8">
+    </head>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table, tr, td {
+            border: 1px solid black;
+            text-align: center;
+            width: 175px;
+        }
+    </style>
+	<body onload="connect()">
+		<h1>Exchange Rates</h1>
+		<table>
+            <tr>
+                <td>CCY</td>
+                <td>Bid</td>
+                <td>Ask</td>
+            </tr>
+            <tr>
+                <td>EUR</td>
+                <td id="BidEUR"></td>
+                <td id="AskEUR"></td>
+            </tr>
+            <tr>
+                <td>USD</td>
+                <td id="BidUSD"></td>
+                <td id="AskUSD"></td>
+            </tr>
+            <tr>
+                <td>GBP</td>
+                <td id="BidGBP"></td>
+                <td id="AskGBP"></td>
+            </tr>
+        </table>
+		
+		<script>
+			function connect(){
+				var method = 'GET';
+				var URL = 'http://api.nbp.pl/api/exchangerates/tables/c/';
+				var xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function(){display(this);};
+				xhr.open(method, URL);
+				xhr.send();
+			}
+
+			function display(req){
+				if(req.readyState == 4 && req.status == 200){
+					var currencyTable = JSON.parse(req.responseText);
+                    console.log(currencyTable);
+                    //EUR
+                    document.getElementById("BidEUR").innerHTML = currencyTable[0].rates[3].bid;
+                    document.getElementById("AskEUR").innerHTML = currencyTable[0].rates[3].ask;
+                    //USD
+                    document.getElementById("BidUSD").innerHTML = currencyTable[0].rates[0].bid;
+                    document.getElementById("AskUSD").innerHTML = currencyTable[0].rates[0].ask;
+                    //GBP
+                    document.getElementById("BidGBP").innerHTML = currencyTable[0].rates[6].bid;
+                    document.getElementById("AskGBP").innerHTML = currencyTable[0].rates[6].ask;
+				}
+			};
+		</script>
+
+	</body>
+</html>

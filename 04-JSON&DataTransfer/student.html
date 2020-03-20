@@ -7,11 +7,23 @@
 	<body>
 		<h1>Student</h1>
 		<p>Open a console and then click the button</p>
-		<input type="button" value="Display student's data">
+		<input type="button" value="Display student's data" onclick="displayData()">
 		<p id="personalData"></p>
 
 		<script>
-
+				function displayData(){
+					var req = new XMLHttpRequest();
+					req.onreadystatechange = function(){getData(this);};
+					req.open("GET", "https://cors-anywhere.herokuapp.com/"+"http://v-ie.uek.krakow.pl/~s202037/JSON/data/data.json");
+					req.send();
+				}
+				
+				function getData(request){
+				if(request.readyState == 4 && request.status == 200){
+					var obj = JSON.parse(request.responseText);
+					document.getElementById("personalData").innerText = obj.name + " " + obj.surname;
+				}
+			};
 		</script>
 
 	</body>

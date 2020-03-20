@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Gold Chart</title>
+        <meta charset="UTF-8">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+	</head>
+	<body onload="connect()">
+		<h1>Gold Chart</h1>
+		<canvas id="goldChart" width="400" height="100%"></canvas>
+		<script>
+			function connect(){
+				var method = 'GET';
+				var URL = 'http://api.nbp.pl/api/cenyzlota/last/10/?format=json';
+				var xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function(){display(this);};
+				xhr.open(method, URL);
+				xhr.send();
+			}
+
+			function display(req){
+				if(req.readyState == 4 && req.status == 200){
+                    let goldRates = JSON.parse(req.responseText);
+                    let prices = [];
+                    let dates = [];
+
+                    for (rate of goldRates){
+                        prices.push(rate.cena);
+                        dates.push(rate.data);
+                    }
+
+                    var ctx = document.getElementById('goldChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: dates,
+                            datasets: [{
+                                label: 'Price in PLN',
+                                data: prices,
+                                backgroundColor: [
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                    
+				}
+			};
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>Personal Data</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+	</head>
+	<body>
+        <h1>Personal Data</h1>
+        <h3 style="font-style: italic">with DataTables</h3>
+		<table id="personalData" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Age</th>
+                    <th>Country</th>
+                    <th>E-mail</th>
+                </tr>
+            </thead>
+        </table>
+
+		<script>
+            $(document).ready(function() {
+                $("#personalData").DataTable({
+                    ajax: "./people.json",
+                    columns: [
+                       {data: "name"},
+                       {data: "surname"},
+                       {data: "age"},
+                       {data: "country"},
+                       {data: "email"},
+                    ]
+                })
+            });
+		</script>
+
+	</body>
+</html>
