@@ -2,8 +2,24 @@
 <html>
 <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+      #app {
+        padding: 30px;
+        border-style: solid;
+        text-align: center;
+        width: 250px;
+      }
+    </style>
 </head>
 <body>
+  <div id="app">
+      <b>{{company}}</b><br>
+      {{address}}<br>
+      {{postcode}} {{city}}<br>
+      tel. {{landline}}, {{mobile}}<br>
+      <a :href="web">{{web}}</a>
+  </div>
+
   <script>
     var app = new Vue({
       el: '#app',

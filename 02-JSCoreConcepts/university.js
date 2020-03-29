@@ -20,7 +20,7 @@ class Students {
     }
 
     get() {
-        return // names (array) in natural order
+        return new Students(this.names.sort()) 
     }
 
     getFirst(n) {

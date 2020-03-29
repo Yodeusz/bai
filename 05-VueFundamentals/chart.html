@@ -2,13 +2,15 @@
 <html>
 <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 </head>
 <body>
+  <canvas id="app" width="400" height="100%"></canvas>
   <script>
     var app = new Vue({
       el: '#app',
       data: {
-        films: [
+        languages: [
           {
             language: 'Python',
             popularity: 25.95
@@ -30,7 +32,44 @@
             popularity: 7.37
           }
         ] 
-      }
+      },
+      mounted() {
+        this.display()
+      },
+      methods: {
+        display(){
+          names = [];
+          popularity = [];
+          for (language of this.languages) {
+            names.push(language.language);
+            popularity.push(language.popularity);
+          };
+          
+          var ctx = document.getElementById('app').getContext('2d');
+          var myChart = new Chart(ctx, {
+              type: 'bar',
+              data: {
+                  labels: names,
+                  datasets: [{
+                      label: 'Popularity of programming languages',
+                      data: popularity,
+                      backgroundColor: [
+                      ],
+                      borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero: true
+                          }
+                      }]
+                  }
+              }
+          });
+				}
+      },
     });
   </script>
 </body>
