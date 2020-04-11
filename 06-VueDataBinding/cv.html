@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <h1>Curriculum Vitae</h1>
+  <div id="app">
+    <span>Imię: </span>
+    <input v-model="personalData.name"><br>
+    <span>Nazwisko: </span>
+    <input v-model="personalData.surname"><br>
+    <span>Wiek: </span>
+    <input v-model.number="personalData.age"><br>
+    <span>Płeć:</span><br>
+    <input type="radio" value="Kobieta" v-model="personalData.gender">
+    <label for="Kobieta">Kobieta</label>
+    <input type="radio" value="Mężczyzna" v-model="personalData.gender">
+    <label for="Mężczyzna">Mężczyzna</label><br>
+    <span>Wykształcenie:</span><br>
+    <select v-model="personalData.education">
+      <option disabled value="">Wybierz:</option>
+      <option>Brak</option>
+      <option>Podstawowe</option>
+      <option>Średnie</option>
+      <option>Wyższe</option>
+    </select><br>
+    <span>Umiejętności:</span><br>
+    <input type="checkbox" value="Obsługa komputera" v-model="personalData.skills">
+    <label for="Obsługa komputera">Obsługa komputera</label><br>
+    <input type="checkbox" value="Prawo jazdy" v-model="personalData.skills">
+    <label for="Prawo jazdy"></label>Prawo jazdy<br>
+    <input type="checkbox" value="Kreatywność" v-model="personalData.skills">
+    <label for="Kreatywność"></label>Kreatywność<br>
+    <input type="checkbox" value="Praca w zespole" v-model="personalData.skills">
+    <label for="Praca w zespole"></label>Praca w zespole<br>
+    <button value="zapisz" v-on:click="save">Zapisz</button>
+    <button value="czytaj" v-on:click="read">Czytaj</button>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        personalData: {
+          name: "",
+          surname: "",
+          age: "",
+          gender: "",
+          education: "",
+          skills: []
+        }
+      },
+      methods: {
+        save: function(event){
+          localStorage.setItem('data',JSON.stringify(this.personalData))
+        },
+        read: function(event){
+          this.personalData = JSON.parse(localStorage.getItem('data'))
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

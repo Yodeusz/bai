@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <h1>Elective Courses</h1>
+  <div id="app">
+    <span>Przedmioty do wyboru:</span><br>
+    <input type="checkbox" value="Comarch Business Intelligence w praktyce zarządzania" v-model="courses">
+    <label for="Comarch Business Intelligence w praktyce zarządzania">Comarch Business Intelligence w praktyce zarządzania</label><br>
+    <input type="checkbox" value="Programowanie aplikacji webowych SPA" v-model="courses">
+    <label for="Programowanie aplikacji webowych SPA"></label>Programowanie aplikacji webowych SPA<br>
+    <input type="checkbox" value="Tworzenie urządzeń Internetu Rzeczy" v-model="courses">
+    <label for="Tworzenie urządzeń Internetu Rzeczy"></label>Tworzenie urządzeń Internetu Rzeczy<br>
+    <input type="checkbox" value="Design Thinking - Twórzcze myślenie projektowe" v-model="courses">
+    <label for="Design Thinking - Twórzcze myślenie projektowe"></label>Design Thinking - Twórzcze myślenie projektowe<br>
+    <input type="checkbox" value="Techniki rozwiązywania problemów informatycznych" v-model="courses">
+    <label for="Techniki rozwiązywania problemów informatycznych"></label>Techniki rozwiązywania problemów informatycznych<br>
+    <p>Wybrano {{count}} przedmiotów.</p>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        courses: []
+      },
+      computed: {
+        count: function(){
+           return this.courses.length;
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
